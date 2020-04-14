@@ -34,6 +34,10 @@ public class ReportsForm extends JFrame
         RegisterListeners();
     }
 
+    /*
+     * Method: InitializeComponents
+     * Purpose: to initialize all components of this form to their defaults.
+     */
     private void InitializeComponents()
     {
         this.pack();
@@ -62,6 +66,10 @@ public class ReportsForm extends JFrame
         PopulateTables();
     }
 
+    /*
+     * Method: RegisterListeners
+     * Purpose: to register all listeners for all components of this form.
+     */
     private void RegisterListeners()
     {
         HelpButton1.addActionListener(new ActionListener()
@@ -92,6 +100,10 @@ public class ReportsForm extends JFrame
         });
     }
 
+    /*
+     * Method: PopulateTables
+     * Purpose: populates the tables for each report type.
+     */
     private void PopulateTables()
     {
         String date;
@@ -155,6 +167,10 @@ public class ReportsForm extends JFrame
         }
     }
 
+    /*
+     * Method: ShowHelpMessage
+     * Purpose: shows a help prompt when help button is clicked for more details on what the reports mean.
+     */
     private void ShowHelpMessage(int type)
     {
         String message;
@@ -186,6 +202,10 @@ public class ReportsForm extends JFrame
     }
 }
 
+/*
+ * Class: ReportModel
+ * Purpose: prevent all cell editing of any report in the report table.
+ */
 class ReportModel extends DefaultTableModel
 {
     @Override

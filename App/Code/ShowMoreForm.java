@@ -20,6 +20,10 @@ public class ShowMoreForm extends JFrame
         InitializeComponents();
     }
 
+    /*
+     * Method: InitializeComponents
+     * Purpose: to initialize all components of this form to their defaults.
+     */
     private void InitializeComponents()
     {
         this.pack();
@@ -57,6 +61,10 @@ public class ShowMoreForm extends JFrame
         ShowAllTable.setModel(ShowAllModel);
     }
 
+    /*
+     * Method: PopulateAuthors
+     * Purpose: populates the form with all the authors of books in the bookstore.
+     */
     private void PopulateAuthors()
     {
         String id;
@@ -91,6 +99,10 @@ public class ShowMoreForm extends JFrame
         }
     }
 
+    /*
+     * Method: PopulatePublishers
+     * Purpose: populates the form with all the publishers of books in the bookstore.
+     */
     private void PopulatePublishers()
     {
         String id;

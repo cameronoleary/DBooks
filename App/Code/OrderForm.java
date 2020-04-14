@@ -33,6 +33,10 @@ public class OrderForm extends JFrame
         RegisterListeners();
     }
 
+    /*
+     * Method: InitializeComponents
+     * Purpose: to initialize all components of this form to their defaults.
+     */
     private void InitializeComponents()
     {
         this.pack();
@@ -74,6 +78,10 @@ public class OrderForm extends JFrame
         PopulateTable();
     }
 
+    /*
+     * Method: RegisterListeners
+     * Purpose: to register all listeners for all components of this form.
+     */
     private void RegisterListeners()
     {
         RefreshButton.addActionListener(new ActionListener()
@@ -97,11 +105,19 @@ public class OrderForm extends JFrame
         CancelButton.addActionListener(this::actionPerformed);
     }
 
+    /*
+     * Method: actionPerformed
+     * Purpose: closes this form.
+     */
     private void actionPerformed(ActionEvent e)
     {
         this.dispose();
     }
 
+    /*
+     * Method: PopulateTable
+     * Purpose: populates the order review with books added to this order.
+     */
     private void PopulateTable()
     {
         String isbn;
@@ -131,6 +147,10 @@ public class OrderForm extends JFrame
         }
     }
 
+    /*
+     * Method: Refresh
+     * Purpose: refreshes the order review to show only selected books.
+     */
     private void Refresh()
     {
         for (int i = 0; i < BookOrderTable.getRowCount(); i++)
@@ -144,6 +164,10 @@ public class OrderForm extends JFrame
         }
     }
 
+    /*
+     * Method: PlaceOrder
+     * Purpose: completes the order by inserting it into the database and gives the user their order number to track.
+     */
     private void PlaceOrder()
     {
         String isbn;

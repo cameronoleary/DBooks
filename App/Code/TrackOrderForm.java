@@ -25,6 +25,10 @@ public class TrackOrderForm extends JFrame
         RegisterListeners();
     }
 
+    /*
+     * Method: InitializeComponents
+     * Purpose: to initialize all components of this form to their defaults.
+     */
     private void InitializeComponents()
     {
         this.pack();
@@ -34,6 +38,10 @@ public class TrackOrderForm extends JFrame
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
+    /*
+     * Method: RegisterListeners
+     * Purpose: to register all listeners for all components of this form.
+     */
     private void RegisterListeners()
     {
         TrackButton.addActionListener(new ActionListener()
@@ -46,6 +54,10 @@ public class TrackOrderForm extends JFrame
         });
     }
 
+    /*
+     * Method: TrackOrder
+     * Purpose: displays order information based on an order number provided in the input field.
+     */
     private void TrackOrder()
     {
         String date             = "N/A";

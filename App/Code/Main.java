@@ -1,7 +1,7 @@
 /*
  *  Author: Cameron O'Leary
  * Contact: cameron.oleary@carleton.ca
- *   Title: Look Inna Book: An Online Bookstore Application
+ *   Title: DBooks: An Online Bookstore Application
  */
 
 import javax.swing.*;
@@ -19,6 +19,7 @@ public class Main
 
         if (dbConnection == null) { return; }
 
+        // Show the login form.
         JFrame logInForm = new LogInForm(queryManager);
         logInForm.setVisible(true);
     }

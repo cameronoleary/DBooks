@@ -1,3 +1,7 @@
+/*
+ * Method: SessionInfo
+ * Purpose: stores ID and owner status of the currently logged in user.
+ */
 public class SessionInfo
 {
     private static String Id;

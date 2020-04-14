@@ -6,12 +6,12 @@ public class BookDetails extends JFrame
 {
     private JPanel mainPanel;
     private JLabel isbnDetail;
+    private JLabel yearDetail;
     private JLabel titleDetail;
     private JLabel genreDetail;
-    private JLabel yearDetail;
-    private JLabel pageCountDetail;
     private JLabel priceDetail;
     private JLabel authorsDetail;
+    private JLabel pageCountDetail;
     private JLabel publisherDetail;
     private JFrame ParentForm;
     private QueryManager QueryManager;
@@ -26,6 +26,10 @@ public class BookDetails extends JFrame
         InitializeComponents();
     }
 
+    /*
+     * Method: InitializeComponents
+     * Purpose: to initialize all components of this form to their defaults.
+     */
     private void InitializeComponents()
     {
         this.pack();
@@ -35,6 +39,13 @@ public class BookDetails extends JFrame
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
+    /*
+     * Method: GetDetails
+     * Purpose: show the details (i.e., ISBN, authors, publisher, etc.) of a book.
+     *
+     * Parameters:
+     * - isbn (String), the ISBN of the book to get details for
+     */
     public void GetDetails(String isbn)
     {
         String year;
@@ -68,6 +79,7 @@ public class BookDetails extends JFrame
                 price     = "$" + bookDetails.getString(6);
             }
 
+            // Populate book details.
             isbnDetail.setText(isbn);
             titleDetail.setText(title);
             genreDetail.setText(genre);
@@ -87,7 +99,6 @@ public class BookDetails extends JFrame
             }
 
             authors = new StringBuilder(authors.substring(0, authors.lastIndexOf(",")));
-
             authorsDetail.setText(authors.toString());
 
             publisher = QueryManager.GetPublisherNameFromIsbn(isbn);

@@ -4,18 +4,25 @@ import java.sql.DriverManager;
 public class ConnectionManager
 {
     public static String Schema;
+    private String Url;
     private String Username;
     private String Password;
-    private String Url;
 
     public ConnectionManager()
     {
+        Schema   = "project";
+        Url      = "jdbc:postgresql://localhost:5432/postgres?currentSchema=" + Schema;
         Username = "postgres";
         Password = "";
-        Schema = "project";
-        Url = "jdbc:postgresql://localhost:5432/postgres?currentSchema=" + Schema;
     }
 
+    /*
+     * Method: EstablishConnection
+     * Purpose: to establish a connection to the database.
+     *
+     * Return: Connection
+     * - The connection to the database; can be used for querying or inserting data.
+     */
     public Connection EstablishConnection()
     {
         Connection conn;
@@ -28,7 +35,7 @@ public class ConnectionManager
         }
         catch (Exception e)
         {
-            System.out.println("An exception was caught: " + e.getMessage());
+            System.out.println("ConnectionManager.EstablishConnection - An exception was caught: " + e.getMessage());
             return null;
         }
 

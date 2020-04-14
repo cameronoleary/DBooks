@@ -47,8 +47,16 @@ public class Utils
             "Owen Sound, ON"
     };
 
+    /*
+     * Method: GenerateLocation
+     * Purpose: generates a random location from the available list.
+     *
+     * Return: static String
+     * - A random location
+     */
     public static String GenerateLocation()
     {
+        // Generate a random number to use as an index within the list.
         Random random = new Random();
         int index     = random.nextInt(Locations.length);
 

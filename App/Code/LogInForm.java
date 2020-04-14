@@ -7,12 +7,12 @@ public class LogInForm extends JFrame {
     private JPanel mainPanel;
     private JButton logInButton;
     private JButton signUpButton;
+    private JButton ImporterButton;
     private JLabel Title;
     private JLabel usernameError;
     private JLabel passwordError;
     private JTextField usernameField;
     private JPasswordField passwordField;
-    private JButton ImporterButton;
     private QueryManager QueryManager;
 
     public LogInForm(QueryManager queryManager)
@@ -24,6 +24,10 @@ public class LogInForm extends JFrame {
         RegisterListeners();
     }
 
+    /*
+     * Method: InitializeComponents
+     * Purpose: to initialize all components of this form to their defaults.
+     */
     private void InitializeComponents()
     {
         this.pack();
@@ -33,6 +37,10 @@ public class LogInForm extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    /*
+     * Method: RegisterListeners
+     * Purpose: to register all listeners for all components of this form.
+     */
     private void RegisterListeners()
     {
         logInButton.addActionListener(new ActionListener()
@@ -63,6 +71,10 @@ public class LogInForm extends JFrame {
         });
     }
 
+    /*
+     * Method: LogIn
+     * Purpose: logs the user into the application.
+     */
     private void LogIn()
     {
         boolean isOwner;
@@ -92,13 +104,14 @@ public class LogInForm extends JFrame {
                     isOwner = Integer.parseInt(userInfo.getString(2)) == 1;
 
                     // Set user information for the current session.
+                    // ID will be used for making an order and owner status is used to know what buttons to enable.
                     SessionInfo.SetId(id);
                     SessionInfo.SetOwner(isOwner);
                 }
             }
             catch (Exception e)
             {
-                System.out.println("An exception was caught: " + e.getMessage());
+                System.out.println("LogInForm.LogIn - An exception was caught: " + e.getMessage());
             }
 
             mainForm = new MainForm(this, QueryManager);
@@ -112,6 +125,10 @@ public class LogInForm extends JFrame {
         }
     }
 
+    /*
+     * Method: IsFormValid
+     * Purpose: validates the login form to check for valid username/password input.
+     */
     private boolean IsFormValid()
     {
         boolean isValid = true;
@@ -140,12 +157,20 @@ public class LogInForm extends JFrame {
         return isValid;
     }
 
+    /*
+     * Method: ShowSignUpForm
+     * Purpose: displays the sign up form.
+     */
     private void ShowSignUpForm()
     {
         JFrame signUpForm = new SignUpForm(this, QueryManager);
         signUpForm.setVisible(true);
     }
 
+    /*
+     * Method: ShowImporterForm
+     * Purpose: displays the importer tool.
+     */
     private void ShowImporterForm()
     {
         Importer importer = new Importer(this, QueryManager);

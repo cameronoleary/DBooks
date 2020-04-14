@@ -39,6 +39,10 @@ public class SignUpForm extends JFrame
         RegisterListeners();
     }
 
+    /*
+     * Method: InitializeComponents
+     * Purpose: to initialize all components of this form to their defaults.
+     */
     private void InitializeComponents()
     {
         this.pack();
@@ -54,6 +58,10 @@ public class SignUpForm extends JFrame
         OwnerGroup.add(yesRadioButton);
     }
 
+    /*
+     * Method: RegisterListeners
+     * Purpose: to register all listeners for all components of this form.
+     */
     private void RegisterListeners()
     {
         submitButton.addActionListener(new ActionListener()
@@ -68,11 +76,19 @@ public class SignUpForm extends JFrame
         cancelButton.addActionListener(this::actionPerformed);
     }
 
+    /*
+     * Method: actionPerformed
+     * Purpose: closes this form.
+     */
     private void actionPerformed(ActionEvent e)
     {
         this.dispose();
     }
 
+    /*
+     * Method: SubmitForm
+     * Purpose: attempts to register the user info with the bookstore.
+     */
     private void SubmitForm()
     {
         String username;
@@ -109,6 +125,10 @@ public class SignUpForm extends JFrame
         registeredMessage.setVisible(true);
     }
 
+    /*
+     * Method: IsFormValid
+     * Purpose: validates the form for invalid input for all input fields.
+     */
     private boolean IsFormValid()
     {
         boolean isValid = true;
@@ -178,6 +198,7 @@ public class SignUpForm extends JFrame
             }
         }
 
+        // Some regex to ensure the email address includes an @ symbol.
         emailRegex = "^(.+)@(.+)$";
         pattern = Pattern.compile(emailRegex);
         matcher = pattern.matcher(emailField.getText());

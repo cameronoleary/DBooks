@@ -9,6 +9,8 @@ import java.util.Scanner;
 /*
  * Class: Importer
  * Purpose: to provide a simple interface for inserting data into the database
+ *
+ * Note: this is not part of the project spec; just something I made to make my testing a little easier.
  */
 public class Importer extends JFrame
 {

@@ -11,11 +11,17 @@ public class MainForm extends JFrame
     private JPanel MainPanel;
     private JTable BookTable;
     private JFrame ParentForm;
+    private JButton AddButton;
+    private JButton ClearButton;
+    private JButton RemoveButton;
     private JButton FilterButton;
     private JButton LogOutButton;
     private JButton TrackOrderButton;
     private JButton ViewDetailsButton;
     private JButton ViewReportsButton;
+    private JButton SeeAllAuthorsButton;
+    private JButton SeeAllPublishersButton;
+    private JButton ProceedToCheckoutButton;
     private JTextField IsbnField;
     private JTextField YearField;
     private JTextField TitleField;
@@ -24,13 +30,7 @@ public class MainForm extends JFrame
     private JTextField AuthorsField;
     private JTextField PageCountField;
     private JTextField PublisherField;
-    private JButton AddButton;
-    private JButton RemoveButton;
-    private JButton ProceedToCheckoutButton;
     private JLabel AddBookError;
-    private JButton ClearButton;
-    private JButton SeeAllAuthorsButton;
-    private JButton SeeAllPublishersButton;
     private BookModel Model;
     private HeaderRenderer Renderer;
     private QueryManager QueryManager;
@@ -46,6 +46,10 @@ public class MainForm extends JFrame
         RegisterListeners();
     }
 
+    /*
+     * Method: InitializeComponents
+     * Purpose: to initialize all components of this form to their defaults.
+     */
     private void InitializeComponents()
     {
         this.pack();
@@ -92,6 +96,10 @@ public class MainForm extends JFrame
         }
     }
 
+    /*
+     * Method: RegisterListeners
+     * Purpose: to register all listeners for all components of this form.
+     */
     private void RegisterListeners()
     {
         LogOutButton.addActionListener(new ActionListener()
@@ -210,6 +218,10 @@ public class MainForm extends JFrame
         });
     }
 
+    /*
+     * Method: PopulateTable
+     * Purpose: to populate the browsing area with available books from the database.
+     */
     public void PopulateTable()
     {
         String isbn;
@@ -249,18 +261,30 @@ public class MainForm extends JFrame
         }
     }
 
+    /*
+     * Method: LogOut
+     * Purpose: to log the user out of the application.
+     */
     private void LogOut()
     {
         this.dispose();
         ParentForm.setVisible(true);
     }
 
+    /*
+     * Method: ShowTrackOrderForm
+     * Purpose: to show the form to track an order.
+     */
     private void ShowTrackOrderForm()
     {
         TrackOrderForm trackOrderForm = new TrackOrderForm(this, QueryManager);
         trackOrderForm.setVisible(true);
     }
 
+    /*
+     * Method: ShowBookDetailsForm
+     * Purpose: to show the form for details of a selected book.
+     */
     private void ShowBookDetailsForm()
     {
         int selectedRow = BookTable.getSelectedRow();
@@ -271,18 +295,33 @@ public class MainForm extends JFrame
         bookDetails.GetDetails(isbn);
     }
 
+    /*
+     * Method: ShowReportsForm
+     * Purpose: to show the form for reports for bookstore owners.
+     */
     private void ShowReportsForm()
     {
         ReportsForm reportsForm = new ReportsForm(this, QueryManager);
         reportsForm.setVisible(true);
     }
 
+    /*
+     * Method: ShowMoreForm
+     * Purpose: to show all authors and publishers in the bookstore.
+     *
+     * Parameters:
+     * - type (int), the type of form to show (1, all authors; 2, all publishers).
+     */
     private void ShowMoreForm(int type)
     {
         ShowMoreForm showMoreForm = new ShowMoreForm(this, QueryManager, type);
         showMoreForm.setVisible(true);
     }
 
+    /*
+     * Method: RemoveBooks
+     * Purpose: to remove a book from the bookstore (only available to owners).
+     */
     private void RemoveBooks()
     {
         int selection = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete the selected book(s)?", "Remove Books", JOptionPane.YES_NO_OPTION);
@@ -313,6 +352,10 @@ public class MainForm extends JFrame
         }
     }
 
+    /*
+     * Method: AddBook
+     * Purpose: to add a book to the bookstore (only available to owners).
+     */
     private void AddBook()
     {
         boolean success;
@@ -363,6 +406,10 @@ public class MainForm extends JFrame
         PopulateTable();
     }
 
+    /*
+     * Method: IsFormValid
+     * Purpose: validates the form for invalid input for all filter fields.
+     */
     private boolean IsFormValid()
     {
         boolean isValid = true;
@@ -426,6 +473,10 @@ public class MainForm extends JFrame
         return isValid;
     }
 
+    /*
+     * Method: Clear
+     * Purpose: clears all the input filter fields.
+     */
     private void Clear()
     {
         AddBookError.setVisible(false);
@@ -439,6 +490,10 @@ public class MainForm extends JFrame
         PublisherField.setText("");
     }
 
+    /*
+     * Method: Filter
+     * Purpose: filters the book search based in input fields (uses an OR directive).
+     */
     private void Filter()
     {
         String isbn;
@@ -494,18 +549,33 @@ public class MainForm extends JFrame
         }
     }
 
+    /*
+     * Method: ShowBookDetailsForm
+     * Purpose: shows the form for entering billing & shipping information for checking out an order.
+     */
     private void ShowTransactionForm()
     {
         TransactionForm transactionForm = new TransactionForm(this, QueryManager);
         transactionForm.setVisible(true);
     }
 
+    /*
+     * Method: GetBookTable
+     * Purpose: returns the book table containing all available books for sale.
+     *
+     * Return: JTable
+     * - The table with all available books in the main menu.
+     */
     public JTable GetBookTable()
     {
         return BookTable;
     }
 }
 
+/*
+ * Class: HeaderRenderer
+ * Purpose: to properly format the table header for browsing books.
+ */
 class HeaderRenderer extends DefaultTableCellRenderer
 {
     @Override
@@ -521,6 +591,10 @@ class HeaderRenderer extends DefaultTableCellRenderer
     }
 }
 
+/*
+ * Class: BookModel
+ * Purpose: to prevent cell editing (e.g., unless adding to order), and disabling certain buttons on row select.
+ */
 class BookModel extends DefaultTableModel
 {
     private JTable Table;

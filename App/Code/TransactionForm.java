@@ -31,6 +31,10 @@ public class TransactionForm extends JFrame
         RegisterListeners();
     }
 
+    /*
+     * Method: InitializeComponents
+     * Purpose: to initialize all components of this form to their defaults.
+     */
     private void InitializeComponents()
     {
         this.pack();
@@ -40,6 +44,10 @@ public class TransactionForm extends JFrame
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
+    /*
+     * Method: RegisterListeners
+     * Purpose: to register all listeners for all components of this form.
+     */
     private void RegisterListeners()
     {
         continueButton.addActionListener(new ActionListener()
@@ -54,11 +62,19 @@ public class TransactionForm extends JFrame
         cancelButton.addActionListener(this::actionPerformed);
     }
 
+    /*
+     * Method: actionPerformed
+     * Purpose: closes this form.
+     */
     private void actionPerformed(ActionEvent e)
     {
         this.dispose();
     }
 
+    /*
+     * Method: ShowOrderForm
+     * Purpose: shows the last form for checking out an order (e.g., the order review and placement).
+     */
     private void ShowOrderForm()
     {
         if (!IsFormValid()) { return; }
@@ -68,6 +84,10 @@ public class TransactionForm extends JFrame
         this.dispose();
     }
 
+    /*
+     * Method: IsFormValid
+     * Purpose: validates the form for invalid input for all input fields.
+     */
     private boolean IsFormValid()
     {
         boolean isValid = true;
